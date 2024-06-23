@@ -1,0 +1,18 @@
+---
+interface Props {
+    link: string;
+    text: string;
+    active: boolean;
+}
+
+const { link, text, active } = Astro.props;
+
+console.log(text, active);
+---
+
+<a
+    href={link}
+    class={`bg-gray-100 hover:bg-gray-200 hover:scale-105 px-4 py-2 rounded-lg ${
+        active ? "underline underline-offset-8 bold bg-slate-200" : ""
+    }`}>{text}</a
+>
