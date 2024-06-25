@@ -1,0 +1,11 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+let name = Astro.url.pathname
+---
+
+
+<Layout title="about page">
+    <h1 class="text-center text-2xl page">About</h1>
+  <h1 class="text-center text 4xl"> the route path is: {name} </h1>
+</Layout>

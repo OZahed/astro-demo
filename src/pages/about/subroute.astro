@@ -1,0 +1,9 @@
+---
+import Layout from "../../layouts/Layout.astro"
+
+let path = Astro.url.pathname
+---
+
+<Layout title="Subroute"> 
+  <h1 class="text-gray-900 text-center text-4xl mt-8"> This is the `{path}` </h1>
+</Layout>

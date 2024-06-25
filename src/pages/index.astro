@@ -1,7 +1,20 @@
 ---
 import Layout from "../layouts/Layout.astro";
+
+let appName = Astro.site;
 ---
 
 <Layout title="Welcome to Astro.">
-	<h1 class="text-center text-2xl page">Home</h1>
+	<h1 class="text-center text-2xl page">
+		Welcome to {appName}
+	</h1>
+
+	<div class="flex">
+		<a
+			href="/todos"
+			class="text-center mx-auto underline underline-offset-8 font-bold my-4 border-spacing-3 border border-gray-500 text-none hover:bg-slate-200 p-8 rounded-md bg-slate-100 text-gray-600"
+		>
+			Todos Panel <strong> &rarrc;</strong></a
+		>
+	</div>
 </Layout>

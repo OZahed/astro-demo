@@ -1,0 +1,14 @@
+---
+import Todo from "../../components/Todo.svelte";
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout title="about page">
+    <h1 class="text-center text-2xl page">Todos page</h1>
+
+    <div class="flex flex-col items-center justify-center content-center">
+        <Todo client:load />
+        <Todo client:load />
+        <Todo client:load />
+    </div>
+</Layout>

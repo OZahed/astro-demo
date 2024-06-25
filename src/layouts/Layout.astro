@@ -28,15 +28,15 @@ console.log("current path: ", currentPath);
 			<NavLink
 				link="/about"
 				text="About"
-				active={currentPath === "/about"}
+				active={currentPath.includes("/about")}
 			/>
 			<NavLink
-				link="/game"
-				text="Game"
-				active={currentPath === "/game"}
+				link="/todos"
+				text="Todos"
+				active={currentPath.includes("/todos")}
 			/>
 		</NavBar>
-		<main class="mt-4">
+		<main class="mt-4 flex flex-col justify-center items-center">
 			<slot />
 		</main>
 	</body>
