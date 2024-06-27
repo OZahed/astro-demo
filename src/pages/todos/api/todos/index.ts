@@ -1,17 +1,10 @@
 import type { APIRoute } from "astro"
-import { readFile } from "fs/promises"
+import { db, Todo } from "astro:db";
 
 
 export const prerender = false;
 
 export const GET: APIRoute = async ({ }) => {
-
-    const todos = await getTodosFile()
+    const todos = await db.select().from(Todo);
     return new Response(JSON.stringify({ message: 'GET todos', todos }))
-}
-
-
-async function getTodosFile() {
-    let val = await readFile('./todos.json')
-    return JSON.parse(val.toString())
 }
