@@ -3,9 +3,16 @@
 
   export let todo: TodoType;
 
-  function deleteTodo(id: number) {
+  let deleted = false;
+
+  async function deleteTodo(id: number) {
     // delete todo
-    fetch(`/todos/api/todos/${id}`, { method: 'DELETE' });
+    try{
+      await fetch(`/todos/api/todos/${id}`, { method: 'DELETE' });
+      deleted = true;
+    }catch(e){
+      console.error(e);
+    }
   }
 
   let lastTyped: Date;
@@ -48,7 +55,7 @@
 </script>
 
 <div
-  class="flex w-full flex-row items-center justify-around gap-4 mx-4 my-2 px-4 shadow-md border border-gray-50"
+  class="flex w-full flex-row items-center justify-around gap-4 mx-4 my-2 px-4 shadow-md border border-gray-50 {deleted? 'hidden': ''}"
 >
   <input
     type="checkbox"
