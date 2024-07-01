@@ -1,31 +1,36 @@
 ---
 import { getCollection } from "astro:content";
 import Card from "../../components/Card.svelte";
+import Layout from "../../layouts/Layout.astro";
 
 const contents = await getCollection("blog");
 
 type Data = {
-  title: string;
-  summary: string;
-  image: { src: string; alt: string };
+    title: string;
+    summary: string;
+    image: { src: string; alt: string };
 };
 ---
 
-<div>
-  {
-    contents.map(
-      ({ data, slug }: { data: Data; slug: string }, idx: number) => {
-        if (!data) return;
-        return (
-          <Card
-            title={data?.title}
-            summary={data?.summary}
-            image={data?.image}
-            rtl={idx % 2 === 0}
-            url={"/blog/" + slug}
-          />
-        );
-      }
-    )
-  }
-</div>
+<Layout title="Blog">
+    <h1 class="text-center text-2xl page">Blog</h1>
+    <div>
+        {
+            contents.map(
+                ({ data, slug }: { data: Data; slug: string }, idx: number) => {
+                    if (!data) return;
+                    return (
+                        <Card
+                            title={data?.title}
+                            summary={data?.summary}
+                            image={data?.image}
+                            rtl={idx % 2 === 0}
+                            url={"/blog/" + slug}
+                        />
+                    );
+                }
+            )
+        }
+    </div>
+</Layout>
+

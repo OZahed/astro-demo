@@ -2,9 +2,10 @@
 import { ViewTransitions } from "astro:transitions";
 import NavBar from "../components/NavBar.astro";
 import NavLink from "../components/NavLink.astro";
+import { slide } from "astro:transitions";
 
 interface Props {
-  title: string;
+    title: string;
 }
 
 const { title } = Astro.props;
@@ -15,36 +16,41 @@ console.log("current path: ", currentPath);
 
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="description" content="Astro description" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
-    <ViewTransitions />
-  </head>
-  <body>
-    <NavBar>
-      <NavLink link="/" text="Home" active={currentPath === "/"} />
-      <NavLink
-        link="/about"
-        text="About"
-        active={currentPath.includes("/about")}
-      />
-      <NavLink
-        link="/todos"
-        text="Todos"
-        active={currentPath.includes("/todos")}
-      />
-      <NavLink
-        link="/blog"
-        text="Blog"
-        active={currentPath.includes("/blog")}
-      />
-    </NavBar>
-    <main class="mt-4 flex flex-col justify-center items-center">
-      <slot />
-    </main>
-  </body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="description" content="Astro description" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="generator" content={Astro.generator} />
+        <title>{title}</title>
+        <ViewTransitions />
+    </head>
+    <body>
+        <NavBar>
+            <NavLink link="/" text="Home" active={currentPath === "/"} />
+            <NavLink
+                link="/about"
+                text="About"
+                active={currentPath.includes("/about")}
+            />
+            <NavLink
+                link="/todos"
+                text="Todos"
+                active={currentPath.includes("/todos")}
+            />
+            <NavLink
+                link="/blog"
+                text="Blog"
+                active={currentPath.includes("/blog")}
+            />
+        </NavBar>
+        <main
+            class="mt-4 flex flex-row justify-between items-center"
+            transition:animate={slide({ duration: "800ms" })}
+        >
+            <div class="flex flex-col justify-center items-center w-full">
+                <slot />
+            </div>
+        </main>
+    </body>
 </html>

@@ -1,11 +1,11 @@
 import type { APIRoute } from "astro"
-import { db, Todo } from "astro:db";
+import { db, desc, Todo } from "astro:db";
 
 
 export const prerender = false;
 
 export const GET: APIRoute = async ({ }) => {
-    const todos = await db.select().from(Todo);
+    const todos = await db.select().from(Todo).orderBy(desc(Todo.created_at)).all();
     return new Response(JSON.stringify({ todos }))
 }
 

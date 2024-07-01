@@ -4,20 +4,22 @@ const { frontmatter } = Astro.props;
 ---
 
 <Layout title="blog">
-  <!-- ... -->
-  <div class="flex flex-col text-xl gap-5 items-center justify-center">
-    <div class="w-full">
-      <img src={frontmatter.image.src} alt={frontmatter.image.alt} />
-    </div>
-    <article
-      class="prose
-      prose-h1:text-[34px] prose-h1:mb-[25px] prose-h1:font-extrabold
-      prose-h2:text-[28px] prose-h2:font-bold
-      w-full my-8"
+    <div
+        class="flex flex-col text-xl gap-5 items-center justify-center w-full"
+        transition:animate="fade"
     >
-      <slot />
-    </article>
-    <!-- Markdown content is injected here -->
-  </div>
-  <!-- ... -->
+        <img
+            src={frontmatter.image.src}
+            alt={frontmatter.image.alt}
+            class="w-1/2 mx-auto"
+        />
+        <div
+            class="prose
+      prose-h1:text-2xl prose-h1:mb-[25px] prose-h1:font-extrabold
+      prose-h2:text-xl prose-h2:font-bold prose-a:underline prose-a:underline-offset-[8px] prose-a:font-bold prose-a:text-cyan-700
+      w-full my-8"
+        >
+            <slot />
+        </div>
+    </div>
 </Layout>
