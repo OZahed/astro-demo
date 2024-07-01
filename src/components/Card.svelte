@@ -3,6 +3,7 @@
   export let summary: string;
   export let image: { src: string; alt: string };
   export let rtl = false;
+  export let url: string;
 </script>
 
 <div
@@ -24,5 +25,10 @@
     <div id="summary">
       <span class="text-base">{summary}</span>
     </div>
+    <a
+      href={url}
+      class="mt-3 text-cyan-700 underline underline-offset-4 hover:text-cyan-900"
+      >Read More <span>></span></a
+    >
   </div>
 </div>

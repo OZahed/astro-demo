@@ -13,16 +13,19 @@ type Data = {
 
 <div>
   {
-    contents.map(({ data }: { data: Data }, idx: number) => {
-      if (!data) return;
-      return (
-        <Card
-          title={data?.title}
-          summary={data?.summary}
-          image={data?.image}
-          rtl={idx % 2 === 0}
-        />
-      );
-    })
+    contents.map(
+      ({ data, slug }: { data: Data; slug: string }, idx: number) => {
+        if (!data) return;
+        return (
+          <Card
+            title={data?.title}
+            summary={data?.summary}
+            image={data?.image}
+            rtl={idx % 2 === 0}
+            url={"/blog/" + slug}
+          />
+        );
+      }
+    )
   }
 </div>

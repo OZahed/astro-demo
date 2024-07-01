@@ -9,22 +9,15 @@ const { frontmatter } = Astro.props;
     <div class="w-full">
       <img src={frontmatter.image.src} alt={frontmatter.image.alt} />
     </div>
-    <div class="w-full my-8">
+    <article
+      class="prose
+      prose-h1:text-[34px] prose-h1:mb-[25px] prose-h1:font-extrabold
+      prose-h2:text-[28px] prose-h2:font-bold
+      w-full my-8"
+    >
       <slot />
-    </div>
+    </article>
     <!-- Markdown content is injected here -->
   </div>
   <!-- ... -->
 </Layout>
-
-<style is:inline>
-  h1 {
-    font-size: 34px;
-    margin-bottom: 25px;
-    font-weight: bolder;
-  }
-  h2 {
-    font-size: 28px;
-    font-weight: bold;
-  }
-</style>
